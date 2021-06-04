@@ -25,7 +25,14 @@ function App() {
       });
       e.target.reset()
   }
-
+  
+  function sendEmailDeliveryDateLogistic() { 
+    var templateParams = { message: "Delivery is done2." ,sendemail: "esg9dealership@outlook.pt" };
+    
+    console.log("sendEmailDeliveryDateLogistic") 
+    emailjs.send('gmail', 'template_xlz9pcj', templateParams, 'user_ualiHPVnbPLyTCQw1E096').then((result) => { console.log(result.text); }, 
+    (error) => { console.log(error.text); }); 
+  } 
 
   const generateQrCode=async()=>{
 
@@ -101,16 +108,9 @@ function App() {
 
             <Grid item x1={4} lg={4} md={6} sm={12} xs={12}>
             </Grid>
-              <form className="contact-form" onSubmit={sendEmail}>
-                <input type="hidden" name="contact_number" />
-                <label>Name</label>
-                <input type="text" name="user_name" />
-                <label>Email</label>
-                <input type="email" name="user_email" />
-                <label>Message</label>
-                <textarea name="message" />
-                <input type="submit" value="Send" />
-              </form>
+              <div className="contact-form" >
+                <button onClick={sendEmailDeliveryDateLogistic}>Send confirmation email</button>
+              </div>
           </Grid>
         </CardContent>
       </Card>
